@@ -5,7 +5,7 @@
 export const site = {
   name: "Robotic Adventures and Simulated Thrills",
   short: "Robotic Adventures",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://site-robotic-adventures-and-simulated-thrills.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://site-robotic-adventures-and-simulat.vercel.app",
   phones: [
     { display: "813-993-6483", tel: "+18139936483" },
     { display: "813-784-5543", tel: "+18137845543" },
