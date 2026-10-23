@@ -48,11 +48,11 @@ export default function Header() {
           </ul>
         </nav>
         <div className="flex items-center gap-3">
-          <a href={`tel:${primaryPhone.tel}`} className="hidden items-center gap-2 font-mono text-[14px] text-text hover:text-glow md:flex">
+          <a href={`tel:${primaryPhone.tel}`} className="hidden items-center gap-2 whitespace-nowrap font-mono text-[14px] text-text hover:text-glow xl:flex">
             <Phone className="h-4 w-4 text-cyan" aria-hidden="true" />
             {primaryPhone.display}
           </a>
-          <Link href="/contact" className="btn-primary cut cut-sm hidden text-[15px] sm:inline-flex">
+          <Link href="/contact" className="btn-primary cut cut-sm hidden whitespace-nowrap text-[15px] sm:inline-flex">
             Check your date
           </Link>
           <button
