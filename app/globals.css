@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+/* Design tokens — sampled from the brand's tent wordmark (#48bcf5), shirt headline (#62becf)
+   and robot-eye glow (#c6f4fe). See clients/robotic-adventures-and-simulated-thrills/
+   design-brief.md in the studio repo. */
+@theme {
+  --color-hangar: #0a0d12;
+  --color-hangar-deep: #06080b;
+  --color-surface: #121821;
+  --color-raised: #1b2330;
+  --color-line: #263040;
+  --color-line-strong: #34405280;
+  --color-text: #eaf6fb;
+  --color-muted: #93a4b5;
+  --color-cyan: #48bcf5;
+  --color-cyan-strong: #2aa6e6;
+  --color-cyan-soft: #62becf;
+  --color-glow: #c6f4fe;
+
+  --font-display: var(--font-chakra), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --ease-launch: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  background: var(--color-hangar);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--color-hangar);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+::selection {
+  background: var(--color-cyan);
+  color: var(--color-hangar);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Component classes live in a layer so Tailwind utilities (hidden, sm:inline-flex…) can override them. */
+@layer components {
+  .label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    text-wrap: balance;
+  }
+
+  /* Cut-corner "panel" silhouette echoing the robots' armor plates and the squared wordmark. */
+  .cut {
+    clip-path: polygon(0 0, calc(100% - var(--cut, 18px)) 0, 100% var(--cut, 18px), 100% 100%, var(--cut, 18px) 100%, 0 calc(100% - var(--cut, 18px)));
+  }
+
+  .cut-sm {
+    --cut: 10px;
+  }
+
+  .cut-lg {
+    --cut: 32px;
+  }
+
+  /* Hairline grid that reads as a hangar floor, used sparingly behind hero and CTA bands. */
+  .floor-grid {
+    background-image:
+      linear-gradient(to right, rgb(72 188 245 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(72 188 245 / 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at 50% 40%, black 30%, transparent 75%);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--color-cyan);
+    color: var(--color-hangar);
+    font-weight: 600;
+    padding: 0.85rem 1.4rem;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 0 0 rgb(198 244 254 / 0);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-glow);
+    box-shadow: 0 0 32px -4px rgb(72 188 245 / 0.65);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: 1px solid var(--color-line);
+    color: var(--color-text);
+    font-weight: 600;
+    padding: 0.8rem 1.35rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--color-cyan);
+    color: var(--color-glow);
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
